@@ -2,11 +2,21 @@ function verificaChuteValido(chute){
     const numero = +chute;
 
     if(chuteInvalido(numero)){
-        elementoChute.innerHTML += `
-            <div>Valor inválido</div>
-        `
-        return;
+        if (chute.toUpperCase() === "GAME OVER") {
+
+            document.body.innerHTML =
+                `
+                <h2>Game Over!!!</h2>
+                <h3>Pressione o botão para jogar novamente</h3>
+                <button id="jogar-novamente" class="btn_jogar" >Jogar novamente</button>
+                `
+                document.body.style.backgroundColor = "black";
+        } else {
+
+            elementoChute.innerHTML += '<div>Valor Inválido</div>';
+        }
     }
+
     if(numeroValido(numero)){
         elementoChute.innerHTML += `
             <div>Valor inválido: fale um número entre ${menorValor} e ${maiorValor}</div>
